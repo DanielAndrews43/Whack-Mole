@@ -17,9 +17,11 @@ public class GameScript : MonoBehaviour {
 	}
 
 	void setToPeeled () {
+		int attempts = 0;
 		int index = Random.Range (0, slots.Length);
-		while (!slots[index].GetComponent<SlotScript>().ChangeStateToPeeled()) {
+		while (!slots[index].GetComponent<SlotScript>().ChangeStateToPeeled() && attempts < 10) {
 			index = Random.Range (0, slots.Length);
+			attempts += 1;
 		}
 	}
 		

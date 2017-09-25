@@ -27,7 +27,7 @@ public class SlotScript : MonoBehaviour {
 			return false;
 		}
 
-		startTime = Time.time;
+		startTime = 1.5f;
 		state = 1;
 		sr.sprite = peeled;
 
@@ -50,14 +50,12 @@ public class SlotScript : MonoBehaviour {
 		}
 	}
 
-	void OnMouseEnter() {
-		if(Input.GetMouseButtonDown(0)){
-			if (state == 0) {
-				gs.LoseLife ();
-			} else if (state == 1) {
-				gs.AddPoints ();
-				ChangeStateToUnpeeled ();
-			}
+	void OnMouseDown() {
+		if (state == 0) {
+			gs.LoseLife ();
+		} else if (state == 1) {
+			gs.AddPoints ();
+			ChangeStateToUnpeeled ();
 		}
 	}
 }
