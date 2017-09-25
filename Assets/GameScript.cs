@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameScript : MonoBehaviour {
 
 	private int lives;
 	private int points;
 	private GameObject[] slots;
+	public Text livesLabel;
+	public Text scoreLabel;
+
+	public Text gameOverLabel;
 
 	// Use this for initialization
 	void Start () {
@@ -28,7 +33,7 @@ public class GameScript : MonoBehaviour {
 
 	public void LoseLife() {
 		lives -= 1;
-		//update lives text
+		livesLabel.text = "Lives: " + lives.ToString ();
 		print(lives);
 		if (lives == 0) {
 			EndGame ();
@@ -36,12 +41,14 @@ public class GameScript : MonoBehaviour {
 	}
 
 	private void EndGame() {
-		//end the game and show Game Over text
+		Time.timeScale = 0;
+		gameOverLabel.text = "GAME OVER!";
+
 	}
 
 	public void AddPoints() {
 		points += 100;
+		scoreLabel.text = "Score: " + points.ToString ();
 		print (points);
-		//update points text;
 	}
 }
