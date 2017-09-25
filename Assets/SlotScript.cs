@@ -51,6 +51,9 @@ public class SlotScript : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
+		if (gs.GetGameOver()) {
+			return;
+		}
 		if (state == 0) {
 			gs.LoseLife ();
 		} else if (state == 1) {

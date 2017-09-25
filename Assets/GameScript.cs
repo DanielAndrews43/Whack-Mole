@@ -10,11 +10,12 @@ public class GameScript : MonoBehaviour {
 	private GameObject[] slots;
 	public Text livesLabel;
 	public Text scoreLabel;
-
+	private bool gameOver;
 	public Text gameOverLabel;
 
 	// Use this for initialization
 	void Start () {
+		gameOver = false;
 		lives = 3;
 		points = 0;
 		slots = GameObject.FindGameObjectsWithTag("TapSlot");
@@ -42,6 +43,7 @@ public class GameScript : MonoBehaviour {
 
 	private void EndGame() {
 		Time.timeScale = 0;
+		gameOver = true;
 		gameOverLabel.text = "GAME OVER!";
 
 	}
@@ -50,5 +52,9 @@ public class GameScript : MonoBehaviour {
 		points += 100;
 		scoreLabel.text = "Score: " + points.ToString ();
 		print (points);
+	}
+
+	public bool GetGameOver() {
+		return gameOver;
 	}
 }
